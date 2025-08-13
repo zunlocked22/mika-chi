@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YT Stream Converter</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input[type="text"] { width: 400px; padding: 8px; }
+    button { padding: 10px 15px; }
+    #status { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>YouTube Live Stream Converter</h1>
+  <p>Enter the YouTube Live Stream URL below and click "Convert".</p>
+  <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=YOUR_YOUTUBE_LIVE_URL">
+  <button onclick="startConversion()">Convert</button>
+  <div id="status"></div>
+
+  <script>
+    async function startConversion() {
+      const youtubeUrl = document.getElementById('youtubeUrl').value;
+      const statusDiv = document.getElementById('status');
+
+      if (!youtubeUrl) {
+        statusDiv.innerText = "Please enter a valid YouTube URL.";
+        return;
+      }
+
+      statusDiv.innerText = "Conversion request sent. This may take a few minutes. Status will be updated below.";
+
+      try {
+        const response = await fetch('/convert', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ url: youtubeUrl })
+        });
+
+        const result = await response.text();
+        statusDiv.innerText = result;
+      } catch (error) {
+        statusDiv.innerText = `An error occurred: ${error.message}`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -110,9 +110,8 @@ export default function App() {
         setStatus('processing');
 
         try {
-            // NOTE: You must change the URL below to point to your deployed backend server.
-            // For example: const backendUrl = 'https://yt-hls-converter.onrender.com';
-            const backendUrl = 'http://localhost:3001';
+            // NOTE: This URL has been updated to your Render deployment.
+            const backendUrl = 'https://mika-chi.onrender.com';
 
             const response = await fetch(`${backendUrl}/api/convert`, {
                 method: 'POST',

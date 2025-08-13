@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "pip install yt-dlp"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,6 @@
     "express": "^4.19.2",
     "fluent-ffmpeg": "^2.1.2",
     "node-cron": "^3.0.3",
-    "yt-dlp-exec": "^2.0.4",
     "ffmpeg-static": "^5.2.0"
   }
 }

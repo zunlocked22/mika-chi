@@ -2,6 +2,13 @@ const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const ffmpegPath = require('ffmpeg-static');
+
+// This tells fluent-ffmpeg where to find the ffmpeg executable
+ffmpeg.setFfmpegPath(ffmpegPath);
+
+// ... rest of your code
+// ... all the other functions and logic are the same
 
 // The output path for your HLS files
 const OUTPUT_DIR = path.join(__dirname, '..', 'streams');
